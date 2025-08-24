@@ -1,6 +1,7 @@
 package Abstract_Factory_Y_Builder.Vuelo;
 
 public class Aeronave {
+    // SE ENCAPSULAN LOS CAMPOS QUE ANTES ESTABAN PUBLICOS EN ESTA CLASE
     private AeronaveInicial configuracion;
 
     public Aeronave(AeronaveInicial configuracion) {

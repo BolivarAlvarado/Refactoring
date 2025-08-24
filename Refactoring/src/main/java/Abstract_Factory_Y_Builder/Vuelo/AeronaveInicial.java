@@ -1,6 +1,7 @@
 package Abstract_Factory_Y_Builder.Vuelo;
 
 public class AeronaveInicial {
+    //Campos privados para acceder mediantes los getters
     private TipoAsiento tipoAsiento;
     private boolean servicioComida;
     private String proveedor;
