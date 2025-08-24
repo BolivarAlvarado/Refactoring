@@ -1,26 +1,21 @@
 package Abstract_Factory_Y_Builder.Vuelo;
 
 public class AeronaveBuilder {
-    private final Aeronave aeronave;
+    private AeronaveInicial configuracion;
 
-    public AeronaveBuilder(TipoAsiento tipo) {
-        aeronave = new Aeronave();
-        aeronave.setTipoAsiento(tipo); //asigna el tipo de asiento
+    public AeronaveBuilder(TipoAsiento tipoAsiento, boolean servicioComida, String proveedor) {
+        configuracion = new AeronaveInicial(tipoAsiento, servicioComida, proveedor);
     }
 
-    public AeronaveBuilder setProveedor(String proveedor) {
-        aeronave.setProveedor(proveedor);
-        return this;
-    }
-
-    public AeronaveBuilder setServicioComida(boolean servicioComida) {
-        aeronave.setServicioComida(servicioComida);
+    public AeronaveBuilder setTipoEquipaje(String tipoEquipaje) {
+        configuracion.setTipoEquipaje(tipoEquipaje);
         return this;
     }
 
     public Aeronave build() {
-        return aeronave;
+        return new Aeronave(configuracion);
     }
 }
+
 
 

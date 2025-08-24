@@ -1,20 +1,20 @@
 package Abstract_Factory_Y_Builder.Vuelo;
 
 public class Aeronave {
-    private String proveedor;
-    private TipoAsiento tipoAsiento;
-    private boolean servicioComida;
+    private AeronaveInicial configuracion;
 
-    // Setters 
-    void setProveedor(String proveedor) { this.proveedor = proveedor; }
-    void setTipoAsiento(TipoAsiento tipoAsiento) { this.tipoAsiento = tipoAsiento; }
-    void setServicioComida(boolean servicioComida) { this.servicioComida = servicioComida; }
+    public Aeronave(AeronaveInicial configuracion) {
+        this.configuracion = configuracion;
+    }
 
     public void mostrarConfiguracion() {
-        System.out.println("Aeronave de: " + proveedor +
-                           ", Asientos: " + tipoAsiento +
-                           ", Servicio Comida: " + (servicioComida ? "Sí" : "No"));
+        System.out.println("Aeronave de: " + configuracion.getProveedor() +
+                           ", Asientos: " + configuracion.getTipoAsiento() +
+                           ", Servicio Comida: " + (configuracion.isServicioComida() ? "Sí" : "No") +
+                           ", Tipo Equipaje: " + configuracion.getTipoEquipaje());
     }
+
+    public AeronaveInicial getConfiguracion() { return configuracion; }
 }
 
 
