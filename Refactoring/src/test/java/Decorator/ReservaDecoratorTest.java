@@ -42,6 +42,7 @@ public class ReservaDecoratorTest {
     @Test
     public void testGetPrecioTotal() {
         System.out.println("getPrecioTotal");
+  
         ReservaDecorator instance = null;
         double expResult = 0.0;
         double result = instance.getPrecioTotal();

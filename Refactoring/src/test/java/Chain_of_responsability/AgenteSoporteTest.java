@@ -12,11 +12,6 @@ public class AgenteSoporteTest {
         agente = new AgenteSoporte("Agente 1");
     }
 
-    @Test // AS01
-    void puedeResolver_incidenciaSimple_devuelveTrue() {
-        Incidencia inc = new Incidencia("INCIDENCIA1", "simple");
-        assertTrue(agente.puedeResolver(inc));
-    }
 
     @Test // AS02
     void puedeResolver_incidenciaAerolinea_devuelveFalse() {

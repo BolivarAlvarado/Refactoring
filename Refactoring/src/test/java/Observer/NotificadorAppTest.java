@@ -41,16 +41,6 @@ public class NotificadorAppTest {
     /**
      * Test of actualizar method, of class NotificadorApp.
      */
-    @Test
-    public void testActualizar() {
-        System.out.println("actualizar");
-        Reserva reserva = null;
-        String mensaje = "";
-        NotificadorApp instance = null;
-        instance.actualizar(reserva, mensaje);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
     
     @Test // NOT02
     void notificadorApp_enviaMensaje() {
