@@ -65,4 +65,6 @@ public class Vuelo {
 
     public String getHorario() { return horario; }
     public Aeronave getAeronave() { return aeronave; }
+    public void confirmar(){}
+    public void cancelar(){}
 }

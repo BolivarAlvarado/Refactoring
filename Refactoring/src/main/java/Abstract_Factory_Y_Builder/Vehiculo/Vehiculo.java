@@ -39,5 +39,8 @@ public class Vehiculo {
     void setColor(String color) { this.color = color; }
     void setEstado(EstadoVehiculo estado) { this.estado = estado; }
     void setPrecio(double precio) { this.precio = precio; }
+    
+    public void confirmar(){}
+    public void cancelar(){}
 }
 
