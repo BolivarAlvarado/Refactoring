@@ -42,20 +42,11 @@ public class VueloFactoryTest {
     @Test
     public void testCrearVuelo() {
         System.out.println("crearVuelo");
-        String horario = "";
-        VueloFactory instance = new VueloFactoryImpl();
+        VueloFactory instance = new VueloFactory();
         Vuelo expResult = null;
-        Vuelo result = instance.crearVuelo(horario);
+        Vuelo result = instance.crearVuelo(TipoAsiento.ECONOMICO, "Avianca", true, "12AM");
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-
-    public class VueloFactoryImpl implements VueloFactory {
-
-        public Vuelo crearVuelo(String horario) {
-            return null;
-        }
-    }
-    
 }

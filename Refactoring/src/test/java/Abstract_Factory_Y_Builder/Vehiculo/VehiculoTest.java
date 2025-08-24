@@ -67,7 +67,7 @@ public class VehiculoTest {
     @Test
     public void testSetTipo() {
         System.out.println("setTipo");
-        String tipo = "";
+        TipoVehiculo tipo = TipoVehiculo.LUJO;
         Vehiculo instance = new VehiculoImpl();
         instance.setTipo(tipo);
         // TODO review the generated test code and remove the default call to fail.

@@ -36,29 +36,13 @@ public class VehiculoBuilderTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of setProveedor method, of class VehiculoBuilder.
-     */
-    @Test
-    public void testSetProveedor() {
-        System.out.println("setProveedor");
-        String proveedor = "";
-        VehiculoBuilder instance = new VehiculoBuilderImpl();
-        VehiculoBuilder expResult = null;
-        VehiculoBuilder result = instance.setProveedor(proveedor);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+    
 
-    /**
-     * Test of setColor method, of class VehiculoBuilder.
-     */
     @Test
     public void testSetColor() {
         System.out.println("setColor");
         String color = "";
-        VehiculoBuilder instance = new VehiculoBuilderImpl();
+        VehiculoBuilder instance = new VehiculoBuilderImpl(TipoVehiculo.LUJO);
         VehiculoBuilder expResult = null;
         VehiculoBuilder result = instance.setColor(color);
         assertEquals(expResult, result);
@@ -72,8 +56,8 @@ public class VehiculoBuilderTest {
     @Test
     public void testSetTipo() {
         System.out.println("setTipo");
-        String tipo = "";
-        VehiculoBuilder instance = new VehiculoBuilderImpl();
+        TipoVehiculo tipo = TipoVehiculo.LUJO;
+        VehiculoBuilder instance = new VehiculoBuilderImpl(TipoVehiculo.LUJO);
         VehiculoBuilder expResult = null;
         VehiculoBuilder result = instance.setTipo(tipo);
         assertEquals(expResult, result);
@@ -88,7 +72,7 @@ public class VehiculoBuilderTest {
     public void testSetModelo() {
         System.out.println("setModelo");
         String modelo = "";
-        VehiculoBuilder instance = new VehiculoBuilderImpl();
+        VehiculoBuilder instance = new VehiculoBuilderImpl(TipoVehiculo.LUJO);
         VehiculoBuilder expResult = null;
         VehiculoBuilder result = instance.setModelo(modelo);
         assertEquals(expResult, result);
@@ -103,7 +87,7 @@ public class VehiculoBuilderTest {
     public void testSetEstado() {
         System.out.println("setEstado");
         EstadoVehiculo estado = null;
-        VehiculoBuilder instance = new VehiculoBuilderImpl();
+        VehiculoBuilder instance = new VehiculoBuilderImpl(TipoVehiculo.LUJO);
         VehiculoBuilder expResult = null;
         VehiculoBuilder result = instance.setEstado(estado);
         assertEquals(expResult, result);
@@ -117,7 +101,7 @@ public class VehiculoBuilderTest {
     @Test
     public void testBuild() {
         System.out.println("build");
-        VehiculoBuilder instance = new VehiculoBuilderImpl();
+        VehiculoBuilder instance = new VehiculoBuilderImpl(TipoVehiculo.LUJO);
         Vehiculo expResult = null;
         Vehiculo result = instance.build();
         assertEquals(expResult, result);
@@ -125,7 +109,11 @@ public class VehiculoBuilderTest {
         fail("The test case is a prototype.");
     }
 
-    public class VehiculoBuilderImpl implements VehiculoBuilder {
+    public class VehiculoBuilderImpl extends VehiculoBuilder {
+
+        public VehiculoBuilderImpl(TipoVehiculo tipo) {
+            super(tipo);
+        }
 
         public VehiculoBuilder setProveedor(String proveedor) {
             return null;

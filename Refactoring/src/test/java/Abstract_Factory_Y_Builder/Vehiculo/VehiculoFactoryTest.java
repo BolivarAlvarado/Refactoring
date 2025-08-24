@@ -50,7 +50,7 @@ public class VehiculoFactoryTest {
         fail("The test case is a prototype.");
     }
 
-    public class VehiculoFactoryImpl implements VehiculoFactory {
+    public class VehiculoFactoryImpl extends VehiculoFactory {
 
         public Vehiculo crearVehiculo() {
             return null;

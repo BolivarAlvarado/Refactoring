@@ -36,18 +36,7 @@ public class AeronaveTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of setProveedor method, of class Aeronave.
-     */
-    @Test
-    public void testSetProveedor() {
-        System.out.println("setProveedor");
-        String proveedor = "";
-        Aeronave instance = new Aeronave();
-        instance.setProveedor(proveedor);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+ 
 
     /**
      * Test of setTipoAsiento method, of class Aeronave.
@@ -55,9 +44,10 @@ public class AeronaveTest {
     @Test
     public void testSetTipoAsiento() {
         System.out.println("setTipoAsiento");
-        String tipoAsiento = "";
-        Aeronave instance = new Aeronave();
-        instance.setTipoAsiento(tipoAsiento);
+        TipoAsiento tipoAsiento = TipoAsiento.EJECUTIVO;
+        AeronaveInicial aeronave = new AeronaveInicial(TipoAsiento.ECONOMICO, true, "Avianca");
+        Aeronave instance = new Aeronave(aeronave);
+        aeronave.setTipoAsiento(tipoAsiento);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -69,8 +59,9 @@ public class AeronaveTest {
     public void testSetServicioComida() {
         System.out.println("setServicioComida");
         boolean servicioComida = false;
-        Aeronave instance = new Aeronave();
-        instance.setServicioComida(servicioComida);
+        AeronaveInicial aeronave = new AeronaveInicial(TipoAsiento.ECONOMICO, true, "Avianca");
+        Aeronave instance = new Aeronave(aeronave);
+        aeronave.setServicioComida(servicioComida);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -81,7 +72,7 @@ public class AeronaveTest {
     @Test
     public void testMostrarConfiguracion() {
         System.out.println("mostrarConfiguracion");
-        Aeronave instance = new Aeronave();
+        Aeronave instance = new Aeronave(new AeronaveInicial(TipoAsiento.ECONOMICO, true, "Avianca"));
         instance.mostrarConfiguracion();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

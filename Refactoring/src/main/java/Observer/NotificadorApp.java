@@ -2,6 +2,7 @@ package Observer;
 
 import Facade.Reserva;
 
+
 public class NotificadorApp implements ObservadorReserva {
     private String deviceId;
 
@@ -12,11 +13,5 @@ public class NotificadorApp implements ObservadorReserva {
     @Override
     public void actualizar(Reserva reserva, String mensaje) {
         System.out.println("Notificación app (" + deviceId + "): " + mensaje + " (reserva " + reserva.getIdReserva() + ")");
-    }
-    
-    @Override
-    public boolean enviar(String mensaje) {
-        System.out.println("Enviando notificación APP " + mensaje);
-        return true;
     }
 }

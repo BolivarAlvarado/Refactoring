@@ -10,7 +10,7 @@ public class DirectorVehiculoTest {
 
     @BeforeEach
     public void setUp() {
-        builder = new VehiculoLujoBuilder(); // puedes usar otro builder si lo tienes
+        builder = new VehiculoBuilder(TipoVehiculo.LUJO); // puedes usar otro builder si lo tienes
         director = new DirectorVehiculo(builder);
     }
 
@@ -41,7 +41,7 @@ public class DirectorVehiculoTest {
     @Test // DV03
     void construirAutoBasico_construyeConBuilderDiferente() {
         // Arrange
-        builder = new VehiculoEconomicoBuilder(); // si tienes otro builder
+        builder = new VehiculoBuilder(TipoVehiculo.ECONOMICO); // si tienes otro builder
         director = new DirectorVehiculo(builder);
 
         // Act
