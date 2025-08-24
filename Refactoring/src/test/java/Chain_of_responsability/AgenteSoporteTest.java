@@ -30,5 +30,28 @@ public class AgenteSoporteTest {
         // Si tuvieras un getter de nombre, aquí podrías validarlo:
         // assertEquals("Agente 1", agente.getNombre());
     }
+    
+    //nuevos tests
+    
+    void agentePasaIncidenciaAServicioCliente() {
+        AgenteSoporte agente = new AgenteSoporte("Pedro");
+        ServicioClienteAereolinea servicio = new ServicioClienteAereolinea();
+        agente.setSiguiente(servicio);
+
+        Incidencia incidencia = new Incidencia("Problema con vuelo", "aerolinea");
+
+        assertTrue(servicio.puedeResolver(incidencia));
+        assertFalse(agente.puedeResolver(incidencia));
+    }
+    
+    @Test // SOP02
+    void servicioClienteResuelveIncidencia() {
+        ServicioClienteAereolinea servicio = new ServicioClienteAereolinea();
+        Incidencia incidencia = new Incidencia("Vuelo cancelado", "aerolinea");
+
+        assertTrue(servicio.puedeResolver(incidencia));
+    }
+    
+    
 }
 

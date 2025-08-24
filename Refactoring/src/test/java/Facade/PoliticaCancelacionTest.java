@@ -65,4 +65,12 @@ public class PoliticaCancelacionTest {
         fail("The test case is a prototype.");
     }
     
+    //nuevo test
+    @Test // POL01
+    void politicaCancelacion_reembolsoCorrecto() {
+        PoliticaCancelacion politica = new PoliticaCancelacion(10, 20);
+        double reembolso = politica.calcularReembolso(1000, 10);
+        assertEquals(1000, reembolso); // depende de tu lógica real
+    }
+    
 }

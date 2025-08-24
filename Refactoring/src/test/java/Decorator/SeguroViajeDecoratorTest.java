@@ -4,13 +4,15 @@
  */
 package Decorator;
 
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-
+import Facade.Reserva;
+import Facade.Usuario;
 /**
  *
  * @author Bolivar
@@ -63,5 +65,21 @@ public class SeguroViajeDecoratorTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+    
+    //nuevo test
+    @Test // DEC01
+    void seguroViajeDecorator_aumentaPrecioYDescripcion() {
+        Reserva reserva = new Reserva("R1", new Usuario("U1", "Ana", "ana@test.com"), 
+                                      100, "Reserva básica", null, null);
+        ReservaInterface decorada = new SeguroViajeDecorator(reserva, 50);
+
+        assertEquals(150, decorada.getPrecioTotal());
+        assertTrue(decorada.getDescripcion().contains("Seguro de viaje"));
+    }
+    
+    
+    
+    
+    
     
 }

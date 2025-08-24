@@ -2,6 +2,8 @@ package Facade;
 
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AdministradorTest {
 
@@ -9,7 +11,7 @@ public class AdministradorTest {
 
     @BeforeEach
     public void setUp(){
-        admin = new Administrador();
+        admin = new Administrador("Juan");
     }
 
     @Test
@@ -85,5 +87,14 @@ public class AdministradorTest {
 
         // Assert
         assertNull(result);
+    }
+    
+    //nuevo test
+    @Test // ADM01
+    void administrador_agregaPolitica() {
+        Administrador admin = new Administrador("Juan");
+        PoliticaCancelacion politica = new PoliticaCancelacion(10, 20);
+        admin.agregarPolitica("p",politica);
+        assertTrue(admin.getPoliticas().containsKey("p"));
     }
 }

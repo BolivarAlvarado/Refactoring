@@ -11,6 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import Facade.Usuario;
 
 /**
  *
@@ -49,6 +50,13 @@ public class NotificadorAppTest {
         instance.actualizar(reserva, mensaje);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
+    }
+    
+    @Test // NOT02
+    void notificadorApp_enviaMensaje() {
+        Usuario usuario = new Usuario("U4", "Marta", "marta@test.com");
+        NotificadorApp app = new NotificadorApp("U4");
+        assertTrue(app.enviar("Check-in disponible"));
     }
     
 }

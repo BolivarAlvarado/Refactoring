@@ -57,5 +57,20 @@ public class IncidenciaTest {
         assertThrows(IllegalArgumentException.class,
                 () -> new Incidencia("Se ha caído la página", "Complejo"));
     }
+    
+    //nuevos tests
+    @Test // INC01
+    void incidencia_tipoNulo_lanzaExcepcion() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Incidencia("Falla en reserva", null);
+        });
+    }
+    
+    @Test // INC02
+    void incidencia_descripcionVacia_lanzaExcepcion() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Incidencia("", "soporte");
+        });
+    }
 }
 

@@ -10,6 +10,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import Facade.Reserva;
+import Facade.Usuario;
 
 /**
  *
@@ -62,6 +64,17 @@ public class CoberturaExtendidaDecoratorTest {
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
+    }
+    
+    //nuevo test
+    @Test // DEC02
+    void coberturaExtendidaDecorator_aumentaPrecioYDescripcion() {
+        Reserva reserva = new Reserva("R2", new Usuario("U2", "Luis", "luis@test.com"), 
+                                      200, "Reserva estándar", null, null);
+        ReservaInterface decorada = new CoberturaExtendidaDecorator(reserva, 100);
+
+        assertEquals(300, decorada.getPrecioTotal());
+        assertTrue(decorada.getDescripcion().contains("Cobertura extendida"));
     }
     
 }

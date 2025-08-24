@@ -55,6 +55,11 @@ public class ObservadorReservaTest {
 
         public void actualizar(Reserva reserva, String mensaje) {
         }
+
+        @Override
+        public boolean enviar(String mensaje) {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
     }
     
 }
