@@ -22,7 +22,7 @@ public class Reserva implements ReservaInterface {
 
     public Reserva() {}
 
-    public Reserva(String idReserva, Usuario usuario, double precioBase, String descripcion,
+    Reserva(String idReserva, Usuario usuario, double precioBase, String descripcion,
                    Vuelo vuelo, Vehiculo vehiculo) {
         this.idReserva = idReserva;
         this.usuario = usuario;
