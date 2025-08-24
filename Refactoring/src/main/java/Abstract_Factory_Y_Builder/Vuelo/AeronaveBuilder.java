@@ -1,5 +1,5 @@
 package Abstract_Factory_Y_Builder.Vuelo;
-
+//Replace Subclass with Fields
 public class AeronaveBuilder {
     private AeronaveInicial configuracion;
 

@@ -1,5 +1,5 @@
 package Abstract_Factory_Y_Builder.Vehiculo;
-
+//Replace Subclass with Fields
 public class Vehiculo {
     private String idVehiculo;
     private TipoVehiculo tipo;        
