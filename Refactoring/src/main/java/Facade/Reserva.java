@@ -2,9 +2,12 @@ package Facade;
 
 import Observer.*;
 import Decorator.*;
+import java.util.ArrayList;
+import java.util.List;
 import Abstract_Factory_Y_Builder.Vehiculo.*;
 import Abstract_Factory_Y_Builder.Vuelo.*;
 
+import java.util.*;
 
 public class Reserva implements ReservaInterface {
     private String idReserva;
@@ -12,17 +15,20 @@ public class Reserva implements ReservaInterface {
     private double precioBase;
     private String descripcion;
 
+    // Subcomponentes del sistema
     private Vuelo vuelo;
     private Vehiculo vehiculo;
+    private List<ReservaDecorator> serviciosAdicionales = new ArrayList<>();
 
-    // Clases para manejar las distintas funcionalides de la clase fachada
-    private ObservadoresManager observadoresManager = new ObservadoresManager();
-    private PoliticasManager politicasManager = new PoliticasManager();
-    private ServiciosAdicionalesManager serviciosManager = new ServiciosAdicionalesManager();
+    // Observadores
+    private List<ObservadorReserva> observadores = new ArrayList<>();
+
+    // Políticas
+    private List<Politica> politicas = new ArrayList<>();
 
     public Reserva() {}
 
-    Reserva(String idReserva, Usuario usuario, double precioBase, String descripcion,
+    public Reserva(String idReserva, Usuario usuario, double precioBase, String descripcion,
                    Vuelo vuelo, Vehiculo vehiculo) {
         this.idReserva = idReserva;
         this.usuario = usuario;
@@ -37,7 +43,9 @@ public class Reserva implements ReservaInterface {
         double total = precioBase;
         if (vuelo != null) total += vuelo.getPrecioBase();
         if (vehiculo != null) total += vehiculo.getPrecio();
-        total += serviciosManager.getPrecioTotalServicios();
+        for (ReservaDecorator s : serviciosAdicionales) {
+            total = s.getPrecioTotal();
+        }
         return total;
     }
 
@@ -45,8 +53,10 @@ public class Reserva implements ReservaInterface {
     public String getDescripcion() {
         String desc = descripcion;
         if (vuelo != null) desc += " | Vuelo: " + vuelo.getIdVuelo();
-        if (vehiculo != null) desc += " | Vehiculo: " + vehiculo.getTipo();
-        desc += " | " + serviciosManager.getDescripcionServicios();
+        if (vehiculo != null) desc += " | Vehiculo: " + vehiculo.getTipoVehiculo();
+        for (ReservaDecorator s : serviciosAdicionales) {
+            desc = s.getDescripcion();
+        }
         return desc;
     }
 
@@ -54,27 +64,53 @@ public class Reserva implements ReservaInterface {
     public void confirmarReserva() {
         if (vuelo != null) vuelo.confirmar();
         if (vehiculo != null) vehiculo.confirmar();
-        serviciosManager.confirmarServicios();
-        observadoresManager.notifyObservadores(this, "Reserva confirmada");
+        for (ReservaDecorator s : serviciosAdicionales) s.confirmarReserva();
+        notifyObservadores("Reserva confirmada");
     }
 
     @Override
     public void cancelarReserva() {
         if (vuelo != null) vuelo.cancelar();
         if (vehiculo != null) vehiculo.cancelar();
-        serviciosManager.cancelarServicios();
-        observadoresManager.notifyObservadores(this, "Reserva cancelada");
+        for (ReservaDecorator s : serviciosAdicionales) s.cancelarReserva();
+        notifyObservadores("Reserva cancelada");
     }
 
-    // Delegación a managers
-    public void agregarServicio(ReservaDecorator servicio) { serviciosManager.agregarServicio(servicio); }
-    public void eliminarServicio(ReservaDecorator servicio) { serviciosManager.eliminarServicio(servicio); }
+    // Servicios adicionales
+    public void agregarServicio(ReservaDecorator servicio) {
+        serviciosAdicionales.add(servicio);
+    }
 
-    public void agregarObservador(ObservadorReserva o) { observadoresManager.agregarObservador(o); }
-    public void eliminarObservador(ObservadorReserva o) { observadoresManager.eliminarObservador(o); }
+    public void eliminarServicio(ReservaDecorator servicio) {
+        serviciosAdicionales.remove(servicio);
+    }
 
-    public void agregarPolitica(Politica p) { politicasManager.agregarPolitica(p); }
-    public boolean validarPoliticas() { return politicasManager.validarPoliticas(this); }
+    // Observadores
+    public void agregarObservador(ObservadorReserva o) {
+        observadores.add(o);
+    }
+
+    public void eliminarObservador(ObservadorReserva o) {
+        observadores.remove(o);
+    }
+
+    private void notifyObservadores(String mensaje) {
+        for (ObservadorReserva o : observadores) {
+            o.actualizar(this, mensaje);
+        }
+    }
+
+    // Políticas
+    public void agregarPolitica(Politica p) {
+        politicas.add(p);
+    }
+
+    public boolean validarPoliticas() {
+        for (Politica p : politicas) {
+            if (!p.aplicar(this)) return false;
+        }
+        return true;
+    }
 
     // Getters
     public String getIdReserva() { return idReserva; }

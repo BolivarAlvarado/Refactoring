@@ -4,7 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Administrador {
+    String nombre;
     private Map<String, Politica> politicas = new HashMap<>();
+    
+    public Administrador(String nombre){
+        this.nombre = nombre;
+    }
 
     public void agregarPolitica(String clave, Politica p) {
         politicas.put(clave, p);
