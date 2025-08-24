@@ -1,11 +1,9 @@
 package Abstract_Factory_Y_Builder.Vuelo;
 
-class DirectorVuelo {
-    public Aeronave construirVuelo(VueloBuilder builder, String proveedor) {
-        builder.setProveedor(proveedor);
-        builder.configurarAsientos();
-        builder.configurarComida();
-        return builder.getResultado();
+public class DirectorVuelo {
+    public Aeronave construirVuelo(AeronaveBuilder builder, String proveedor, boolean servicioComida) {
+        builder.setProveedor(proveedor)
+               .setServicioComida(servicioComida);
+        return builder.build();
     }
 }
-

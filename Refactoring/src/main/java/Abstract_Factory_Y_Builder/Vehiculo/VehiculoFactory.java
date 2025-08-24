@@ -1,6 +1,7 @@
 package Abstract_Factory_Y_Builder.Vehiculo;
 
-public interface VehiculoFactory {
-    Vehiculo crearVehiculo();
+public class VehiculoFactory {
+    public static Vehiculo crearVehiculo(TipoVehiculo tipo) {
+        return new VehiculoBuilder(tipo).build();
+    }
 }
-
